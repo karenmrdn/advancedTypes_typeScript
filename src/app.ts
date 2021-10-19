@@ -116,3 +116,29 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: "bird", flyingSpeed: 20 });
+
+/* Type casting */
+console.log("_________________________________");
+
+// const inputElement = document.querySelector("input"); // type: HTMLInputElement
+// const inputElement = document.getElementById("userInput"); // type: HTMLElement
+
+// const inputElement = <HTMLInputElement>document.getElementById("userInput")!;
+// OR
+const inputElement = document.getElementById("userInput")! as HTMLInputElement;
+
+inputElement.value = "Hello World";
+
+/* Index properties */
+interface ErrorContainer {
+  id: string; // we can only add some properties with the same type
+  [key: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  id: "1",
+  title: "Error occurred",
+  message: "Something went wrong",
+};
+console.log(errorBag);
+ 
