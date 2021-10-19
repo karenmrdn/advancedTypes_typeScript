@@ -28,12 +28,21 @@ type Universal = Combinable & Numeric; // type that both of them have
 const u1: Universal = 2;
 console.log(u1);
 
+function add(a: number, b: number): number; /* overload */
+function add(a: string, b: string): string; /* overload */
+function add(a: string, b: number): string; /* overload */
+function add(a: number, b: string): string; /* overload */
 function add(a: Combinable, b: Combinable) {
   if (typeof a === "string" || typeof b === "string") {
     return a.toString() + b.toString();
   }
   return a + b;
 }
+
+const fullName = add("Karen", " M.");
+console.log("Full name: " + fullName);
+const splitFullNameArr = fullName.split(" ");
+console.log("Split full name:", splitFullNameArr);
 
 type UnknownEmployee = Employee | Admin;
 
@@ -141,4 +150,20 @@ const errorBag: ErrorContainer = {
   message: "Something went wrong",
 };
 console.log(errorBag);
- 
+
+/* Optional chaining */
+console.log("_________________________________");
+
+const fetchedUserData = {
+  id: "u1",
+  name: "Max",
+  job: { title: "CEO", description: "Another company" },
+};
+console.log(fetchedUserData?.job?.title);
+
+/* Nullish coalescing */
+console.log("_________________________________");
+
+const userInput = "";
+const storedData = userInput ?? "DEFAULT";
+console.log(userInput);
